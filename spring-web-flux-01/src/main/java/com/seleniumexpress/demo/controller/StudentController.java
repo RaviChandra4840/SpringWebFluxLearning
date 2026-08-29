@@ -21,8 +21,12 @@ public class StudentController {
 	@GetMapping(value="/students", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
 	public Flux<Student> getTotalStudents(){
 		
-		return studentService.getAllStudents();
+		return studentService.getAllStudents().log();
 	}
 
-	
+	@GetMapping(value="/studentsWithSleep", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+	public Flux<Student> getTotalStudents_Sleep(){
+		
+		return studentService.getAllStudents_withsleep().log();
+	}
 }

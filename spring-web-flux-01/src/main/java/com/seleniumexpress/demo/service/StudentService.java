@@ -17,5 +17,9 @@ public class StudentService {
 	public Flux<Student> getAllStudents(){
 		return studentrepo.findAll();
 	}
+	
+	public Flux<Student> getAllStudents_withsleep(){
+		return studentrepo.findAllStudents();
+	}
 
 }
