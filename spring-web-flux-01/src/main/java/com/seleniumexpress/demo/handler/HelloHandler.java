@@ -1,5 +1,7 @@
 package com.seleniumexpress.demo.handler;
 
+import java.time.Duration;
+
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -10,9 +12,9 @@ import reactor.core.publisher.Mono;
 @Component
 public class HelloHandler {
 
-	public Mono<ServerResponse> hellohandler() {
+	public Mono<ServerResponse> hihandler() {
 		
-		Flux<String> dataPublisher = Flux.just("hello","world","hi","reactive stream");
+		Flux<String> dataPublisher = Flux.just("hello","world","hi","reactive stream").delayElements(Duration.ofSeconds(1));
 		Mono<ServerResponse> serverResponse = ServerResponse.ok().body(dataPublisher, String.class);
 		return serverResponse;
 	}

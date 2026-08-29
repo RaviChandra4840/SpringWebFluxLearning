@@ -19,7 +19,8 @@ public class HelloRouter {
 	@Bean
 	RouterFunction<ServerResponse> routerConfig(){
 		
-		return RouterFunctions.route(RequestPredicates.GET("/hi/{yourName}"), helloHandler::helloPlaceholder);
+		return RouterFunctions.route(RequestPredicates.GET("/hello/{yourName}"), helloHandler::helloPlaceholder)
+				.andRoute(RequestPredicates.GET("/hi"), request -> helloHandler.hihandler());
 		
 	}
 	
